@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.onlinefilmek" name="Online Filmek" version="0.1.0" provider-name="Vizesnyolcas">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+   	<import addon="script.module.urlresolver" version="2.0.9"/>
+  	<import addon="script.module.t0mm0.common" version="1.0.0"/>
+  	<import addon="script.module.metahandler" version="2.0.3"/>
+    <import addon="script.module.parsedom" version="0.9.1"/>
+    <import addon="script.module.urlresolver"  version="2.0.9"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="onlinefilmek.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">addon for Online-filmek.cc</summary>
+    <description lang="en">It is a video addon for the well known hungarian online movie site, online-filmek.cc</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+  </extension>
+</addon>
