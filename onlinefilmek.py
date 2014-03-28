@@ -86,21 +86,7 @@ def listvideos(urlFull,what='film'):
       addDir(title, url, 'listproviders', img)
     if what == 'sorozat':
       addDir(title, url, 'listseries', img)
-#  else:
-#    filmek = soup.findAll('div', attrs={'class': 'box'})
-#    for film_spans in filmek:
-#      url = film_spans.find('a')['href']
-#      title = film_spans.find('a').text
-#      img = ''
-#      print "LISTVIDEOS, SOROZAT: " + url
-#      addDir(title, url, 'listproviders', img)
 
-    # for the plot
-#    print "ListVideos URL:" + url
-#    content2 = getUrl(url)
-#    soup2 = BeautifulSoup(content2,convertEntities=BeautifulSoup.HTML_ENTITIES)
-#    plot = soup2.findAll('div', attrs={'class':'leiras'})[1].text
-    #
   addDir('Következő -->', currentpage[0] + '/' + str(nextpage) ,'filmlista','')
   xbmcplugin.endOfDirectory(pluginhandle)
 
