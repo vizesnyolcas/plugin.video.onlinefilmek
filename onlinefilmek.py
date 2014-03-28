@@ -108,28 +108,22 @@ def listproviders(urlFull):
   content = getUrl(urlFull)
   soup = BeautifulSoup(content,convertEntities=BeautifulSoup.HTML_ENTITIES)
   print urlFull
-  provtable = soup.find('table',attrs={'id':'linkek'}).findAll('tr')
+  megoszto_link=soup.find('a', attrs={'id': 'megoszto_link'})['href']
+  filmvilag=getUrl(megoszto_link)
+  fsoup=BeautifulSoup(filmvilag,convertEntities=BeautifulSoup.HTML_ENTITIES)
+  provtable = fsoup.find('table').findAll('tr')
   provtable.pop(0)
   for provider in provtable:
     td = provider.findAll('td')
     if td:
       minoseg = td[0].text
-      nincs_link = re.search('nem tartozik link',minoseg)
-      if nincs_link is None:
-        prov = td[1].text
-        if td[0].find('div')['class'] == 'kep-magyar_szinkron':
-          nyelv = 'HUN'
-        else:
-          nyelv = 'SUB'
-        url = td[3].find('a')['href']
-
-        content2 = getUrl(url)
-        soup2 = BeautifulSoup(content2,convertEntities=BeautifulSoup.HTML_ENTITIES)
-        video_place = soup2.find('div',attrs={'id': 'video_place'})
-        if video_place is not None:
-          url = video_place.find('iframe')['src']
-
-        addDir('[' + minoseg + '] ' + prov + '  ' + nyelv , url, 'playvideo', '')
+      prov = td[1].text
+      if td[0].find('div')['class'] == 'kep-magyar_szinkron':
+        nyelv = 'HUN'
+      else:
+        nyelv = 'SUB'
+      url = td[3].find('a')['href']
+      addDir('[' + minoseg + '] ' + prov + '  ' + nyelv , url, 'playvideo', '')
   xbmcplugin.endOfDirectory(pluginhandle)
 
 def listseries(urlFull):
